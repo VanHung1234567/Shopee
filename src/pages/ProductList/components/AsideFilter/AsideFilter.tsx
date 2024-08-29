@@ -7,24 +7,21 @@ import InputNumber from 'src/components/InputNumber'
 import path from 'src/constants/path'
 import { QueryConfig } from 'src/hooks/useQueryConfig'
 import { Category } from 'src/types/category.type'
-import { NoUndefinedField } from 'src/types/utils.type'
-import { Schema, schema } from 'src/utils/rules'
-import RatingStars from '../RatingStars'
+import { priceSchema } from 'src/utils/rules'
 import { omit } from 'lodash'
+import RatingStars from '../RatingStars'
 
 interface Props {
   queryConfig: QueryConfig
   categories: Category[]
 }
 
-type FormData = NoUndefinedField<Pick<Schema, 'price_max' | 'price_min'>>
+// type FormData = NoUndefinedField<Pick<Schema, 'price_max' | 'price_min'>>
 /**
  * Rule validate
  * Nếu có price_min và price_max thì price_max >= price_min
  * Còn không thì có price_min thì không có price_max và ngược lại
  */
-
-const priceSchema = schema.pick(['price_min', 'price_max'])
 
 export default function AsideFilter({ queryConfig, categories }: Props) {
   const { category } = queryConfig
@@ -33,7 +30,7 @@ export default function AsideFilter({ queryConfig, categories }: Props) {
     handleSubmit,
     trigger,
     formState: { errors }
-  } = useForm<FormData>({
+  } = useForm({
     defaultValues: {
       price_min: '',
       price_max: ''
@@ -49,8 +46,8 @@ export default function AsideFilter({ queryConfig, categories }: Props) {
       pathname: path.home,
       search: createSearchParams({
         ...queryConfig,
-        price_max: data.price_max,
-        price_min: data.price_min
+        price_max: data.price_max ? data.price_max : '',
+        price_min: data.price_min ? data.price_min : ''
       }).toString()
     })
   })

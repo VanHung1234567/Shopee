@@ -1,4 +1,3 @@
-
 import { Product, ProductList, ProductListConfig } from 'src/types/products-type'
 import { SuccessResponseApi } from 'src/types/utils.type'
 import http from 'src/utils/http'
