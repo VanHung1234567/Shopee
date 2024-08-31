@@ -179,6 +179,18 @@ export default function AsideFilter({ queryConfig, categories }: Props) {
                 )
               }}
             />
+             {/* <InputV2
+              control={control}
+              name='price_min'
+              type='number'
+              className='grow'
+              placeholder='₫ TỪ'
+              classNameInput='p-1 w-full outline-none border border-gray-300 focus:border-gray-500 rounded-sm focus:shadow-sm'
+              classNameError='hidden'
+              onChange={() => {
+                trigger('price_max')
+              }}
+            /> */}
           </div>
           <div className='mt-1 text-red-600 text-center min-h-[1.25rem] text-sm'>{errors.price_min?.message}</div>
           <Button className='w-full p-2 uppercase bg-orange text-white text-sm hover:bg-orange/80 flex justify-center items-center'>

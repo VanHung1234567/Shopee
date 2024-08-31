@@ -29,7 +29,7 @@ export default function QuantityController({
     } else if (_value < 1) {
       _value = 1
     }
-    onType && onType(_value)
+    onType && onType(_value)  
     setLocalValue(_value)
   }
 

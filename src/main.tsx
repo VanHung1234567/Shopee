@@ -7,7 +7,15 @@ import App from './App'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { AppProvider } from './context/app.context'
 
-const queryClient = new QueryClient()
+export const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      refetchOnWindowFocus: false,
+      retry: 0
+    }
+  }
+})
+
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
     <BrowserRouter>
