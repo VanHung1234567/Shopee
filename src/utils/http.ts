@@ -2,14 +2,14 @@ import axios, { AxiosError, type AxiosInstance } from 'axios'
 import { toast } from 'react-toastify'
 import HttpStatusCode from 'src/constants/httpStatusCode.enum'
 import { AuthResponse } from 'src/types/auth.type'
-import { clearLS, getAccessTokenFormLS, setAccessTokenToLS, setProfileToLS } from './auth'
+import { clearLS, getAccessTokenFromLS, setAccessTokenToLS, setProfileToLS } from './auth'
 import path from 'src/constants/path'
 
 class Http {
   instance: AxiosInstance
   private accessToken: string
   constructor() {
-    this.accessToken = getAccessTokenFormLS()
+    this.accessToken = getAccessTokenFromLS()
     this.instance = axios.create({
       baseURL: 'https://api-ecom.duthanhduoc.com/',
       timeout: 10000,
@@ -51,6 +51,10 @@ class Http {
           const data: any | undefined = error.response?.data
           const message = data.message || error.message
           toast.error(message)
+        }
+
+        if (error.response?.status === HttpStatusCode.Unauthorized) {
+          clearLS()
         }
         return Promise.reject(error)
       }

@@ -7,7 +7,7 @@ import App from './App'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { AppProvider } from './context/app.context'
 
-export const queryClient = new QueryClient({
+const queryClient = new QueryClient({
   defaultOptions: {
     queries: {
       refetchOnWindowFocus: false,
