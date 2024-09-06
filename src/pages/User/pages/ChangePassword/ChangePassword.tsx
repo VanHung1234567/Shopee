@@ -4,7 +4,7 @@ import { AxiosResponse } from 'axios'
 import omit from 'lodash/omit'
 import { useForm } from 'react-hook-form'
 import { toast } from 'react-toastify'
-import userApi from 'src/apis/user.api'
+import userApi, { BodyUpdateProfile } from 'src/apis/user.api'
 import Button from 'src/components/Button'
 import Input from 'src/components/Input'
 import { User } from 'src/types/user.type'
@@ -15,10 +15,6 @@ import { isAxiosUnprocessableEntityError } from 'src/utils/utils'
 type FormData = Pick<UserSchema, 'password' | 'new_password' | 'confirm_password'>
 const passwordSchema = userSchema.pick(['password', 'new_password', 'confirm_password'])
 
-interface BodyUpdateProfile extends Omit<User, '_id' | 'roles' | 'createdAt' | 'updatedAt' | 'email'> {
-  password?: string
-  newPassword?: string
-}
 
 export default function ChangePassword() {
   const {

@@ -8,8 +8,9 @@ import path from 'src/constants/path'
 import { QueryConfig } from 'src/hooks/useQueryConfig'
 import { Category } from 'src/types/category.type'
 import { priceSchema } from 'src/utils/rules'
-import { omit } from 'lodash'
+import omit from 'lodash/omit'
 import RatingStars from '../RatingStars'
+import { useTranslation } from 'react-i18next'
 
 interface Props {
   queryConfig: QueryConfig
@@ -24,6 +25,7 @@ interface Props {
  */
 
 export default function AsideFilter({ queryConfig, categories }: Props) {
+  const { t } = useTranslation('home')
   const { category } = queryConfig
   const {
     control,
@@ -80,7 +82,7 @@ export default function AsideFilter({ queryConfig, categories }: Props) {
             </g>
           </g>
         </svg>
-        Tất cả danh mục
+        {t('aside filter.all categories')}
       </Link>
       <div className='bg-gray-300 h-[1px] my-4' />
       <ul>
@@ -129,7 +131,7 @@ export default function AsideFilter({ queryConfig, categories }: Props) {
             />
           </g>
         </svg>
-        Bộ lọc tìm kiếm
+        {t('aside filter.filter search')}
       </Link>
       <div className='bg-gray-300 h-[1px] my-4' />
       <div className='my-5'>
@@ -179,7 +181,7 @@ export default function AsideFilter({ queryConfig, categories }: Props) {
                 )
               }}
             />
-             {/* <InputV2
+            {/* <InputV2
               control={control}
               name='price_min'
               type='number'

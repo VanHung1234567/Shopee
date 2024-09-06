@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import { yupResolver } from '@hookform/resolvers/yup'
 import { useMutation } from '@tanstack/react-query'
-import { omit } from 'lodash'
+import omit from 'lodash/omit'
 import { useContext } from 'react'
 import { useForm } from 'react-hook-form'
 import { Link, useNavigate } from 'react-router-dom'
@@ -88,7 +88,7 @@ export default function Register() {
                 register={register}
                 type='password'
                 className='mt-2'
-                // classNameEye='absolute right-[5px] h-5 w-5 cursor-pointer top-[12px]'
+                classNameEye='absolute right-[5px] h-5 w-5 cursor-pointer top-[12px]'
                 errorMessage={errors.password?.message}
                 placeholder='Password'
                 autoComplete='on'
@@ -99,7 +99,7 @@ export default function Register() {
                 register={register}
                 type='password'
                 className='mt-2'
-                // classNameEye='absolute right-[5px] h-5 w-5 cursor-pointer top-[12px]'
+                classNameEye='absolute right-[5px] h-5 w-5 cursor-pointer top-[12px]'
                 errorMessage={errors.confirm_password?.message}
                 placeholder='Confirm Password'
                 autoComplete='on'

@@ -13,14 +13,11 @@ import { userSchema, UserSchema } from 'src/utils/rules'
 import { getAvatarUrl, isAxiosUnprocessableEntityError } from 'src/utils/utils'
 import DateSelect from '../../components/DateSelect'
 import { AppContext } from 'src/context/app.context'
-import userApi from 'src/apis/user.api'
+import userApi, { BodyUpdateProfile } from 'src/apis/user.api'
 import { AxiosResponse } from 'axios'
 import { User } from 'src/types/user.type'
 
-interface BodyUpdateProfile extends Omit<User, '_id' | 'roles' | 'createdAt' | 'updatedAt' | 'email'> {
-  password?: string
-  newPassword?: string
-}
+
 
 function Info() {
   const {
