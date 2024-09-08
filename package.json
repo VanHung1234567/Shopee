@@ -10,7 +10,9 @@
     "lint:fix": "eslint --fix src/",
     "prettier": "prettier --check \"src/**/(*.tsx|*.ts|*.css|*.scss)\"",
     "prettier:fix": "prettier --write \"src/**/(*.tsx|*.ts|*.css|*.scss)\"",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "test": "vitest",
+    "coverage": "vitest run --coverage"
   },
   "dependencies": {
     "@floating-ui/react-dom-interactions": "^0.13.3",
@@ -18,15 +20,18 @@
     "@tailwindcss/line-clamp": "^0.4.4",
     "@tanstack/react-query": "^5.52.2",
     "@tanstack/react-query-devtools": "^5.51.24",
+    "@vitest/coverage-v8": "^2.0.5",
     "axios": "^1.7.4",
     "classnames": "^2.5.1",
     "dompurify": "^3.1.6",
     "framer-motion": "^11.3.29",
+    "html-to-text": "^9.0.5",
     "i18next": "^23.14.0",
     "immer": "^10.1.1",
     "lodash": "^4.17.21",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
+    "react-helmet-async": "^2.0.5",
     "react-hook-form": "^7.52.2",
     "react-i18next": "^15.0.1",
     "react-router-dom": "^6.26.1",
@@ -36,6 +41,8 @@
   "devDependencies": {
     "@eslint/js": "^9.9.0",
     "@types/dompurify": "^3.0.5",
+    "@types/html-to-text": "^9.0.4",
+    "@types/jsdom": "^21.1.7",
     "@types/lodash": "^4.17.7",
     "@types/node": "^22.4.1",
     "@types/react": "^18.3.3",
@@ -53,6 +60,7 @@
     "eslint-plugin-react-hooks": "^4.6.2",
     "eslint-plugin-react-refresh": "^0.4.9",
     "globals": "^15.9.0",
+    "jsdom": "^25.0.0",
     "postcss": "^8.4.41",
     "prettier": "^3.3.3",
     "prettier-plugin-tailwindcss": "^0.6.6",
@@ -60,6 +68,7 @@
     "tailwindcss": "^3.4.10",
     "typescript": "^5.5.3",
     "typescript-eslint": "^8.0.1",
-    "vite": "^5.4.1"
+    "vite": "^5.4.1",
+    "vitest": "^2.0.5"
   }
 }
