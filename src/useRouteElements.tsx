@@ -44,24 +44,26 @@ export default function useRouteElements() {
       element: <RejectedRoute />,
       children: [
         {
-          path: path.login,
-          element: (
-            <RegisterLayout>
-              <Suspense>
-                <Login />
-              </Suspense>
-            </RegisterLayout>
-          )
-        },
-        {
-          path: path.register,
-          element: (
-            <RegisterLayout>
-              <Suspense>
-                <Register />
-              </Suspense>
-            </RegisterLayout>
-          )
+          path: '',
+          element: <RegisterLayout />,
+          children: [
+            {
+              path: path.login,
+              element: (
+                <Suspense>
+                  <Login />
+                </Suspense>
+              )
+            },
+            {
+              path: path.register,
+              element: (
+                <Suspense>
+                  <Register />
+                </Suspense>
+              )
+            }
+          ]
         }
       ]
     },
@@ -116,36 +118,67 @@ export default function useRouteElements() {
       ]
     },
     {
-      path: path.productDetail,
-      element: (
-        <MainLayout>
-          <Suspense>
-            <ProductDetail />
-          </Suspense>
-        </MainLayout>
-      )
-    },
-    {
       path: '',
-      index: true,
-      element: (
-        <MainLayout>
-          <Suspense>
-            <ProductList />
-          </Suspense>
-        </MainLayout>
-      )
-    },
-    {
-      path: '*',
-      element: (
-        <MainLayout>
-          <Suspense>
-            <NotFound />
-          </Suspense>
-        </MainLayout>
-      )
+      element: <MainLayout />,
+      children: [
+        {
+          path: path.productDetail,
+          element: (
+            <Suspense>
+              <ProductDetail />
+            </Suspense>
+          )
+        },
+        {
+          path: '',
+          index: true,
+          element: (
+            <Suspense>
+              <ProductList />
+            </Suspense>
+          )
+        },
+        {
+          path: '*',
+          element: (
+            <Suspense>
+              <NotFound />
+            </Suspense>
+          )
+        }
+      ]
     }
+    // {
+    //   path: path.productDetail,
+    //   element: (
+    //     <MainLayout>
+    //       <Suspense>
+    //         <ProductDetail />
+    //       </Suspense>
+    //     </MainLayout>
+    //   )
+    // },
+    // {
+    //   path: '',
+    //   index: true,
+    //   element: (
+    //     <MainLayout>
+    //       <Suspense>
+    //         <ProductList />
+    //       </Suspense>
+    //     </MainLayout>
+    //   )
+    // },
+    // {
+    //   path: '*',
+    //   element: (
+    //     <MainLayout>
+    //       <Suspense>
+    //         <NotFound />
+    //       </Suspense>
+    //     </MainLayout>
+    //   )
+    // }
   ])
   return routeElements
 }
